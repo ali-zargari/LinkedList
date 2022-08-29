@@ -74,7 +74,7 @@ public class SortedLinkedList {
 	 /****** THIS IS WHERE YOUR IMPLEMENTATION STARTS******/
 	 
 	
-	/*
+	/**
 	 * Inserts a new node in the linked list with data equal to i
 	 * Maintains the sorted order of the list
 	 */
@@ -82,11 +82,13 @@ public class SortedLinkedList {
 		Node toInsert = new Node(i);
 
 		//----case where i is invalid----
-		if(toInsert == null) return;
+		if(toInsert == null)
+			return;
 
 		//----case where list is empty----
 		if(isEmpty()){
 			head = toInsert;
+			tail = head;
 			return;
 		}
 
@@ -126,14 +128,19 @@ public class SortedLinkedList {
 		
 	}
 	
-	/*
+	/**
 	 * This method returns true if the list is in sorted order
 	 */
 	public boolean isSorted() {
-		return false;
+		Node temp = head;
+		while(temp != null){
+			if(temp.data > temp.next.data){ return false;}
+			temp = temp.next;
+		}
+		return true;
 	}
 	
-	/*
+	/**
 	 * This method returns a Java LinkedList of integers that matches the SortedLinkedList
 	 */
 	public LinkedList<Integer> getAscending(){
@@ -143,7 +150,7 @@ public class SortedLinkedList {
 		
 	}
 	
-	/*
+	/**
 	 * This method returns a Java LinkedList of integers that is the SortedLinkedList
 	 * but in descending order (from largest to smallest)
 	 */
